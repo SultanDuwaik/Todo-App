@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const List = require('./List');
+const User = require('./User');
 
 const Task = sequelize.define('Task', {
   title: { type: DataTypes.STRING, allowNull: false },
@@ -16,6 +17,15 @@ const Task = sequelize.define('Task', {
     },
     onDelete: 'CASCADE',
   },
+  userId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+  },
+  
 
 });
 
